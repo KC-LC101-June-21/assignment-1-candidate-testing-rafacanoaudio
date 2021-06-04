@@ -38,12 +38,30 @@ function gradeQuiz(candidateAnswers) {
     }
   };
   percentage = score / questions.length * 100
-
-  console.log("\nCandidate Name:", candidateName);
+  let veredict = "FAILED";
+  if (percentage >= 80) {
+    veredict = "PASSED"
+  }
+  //THE HARD WAY
+  /*console.log("\nCandidate Name:", candidateName);
   for (let i = 0; i < questions.length; i++) {
     console.log(i+1 +")", questions[i] + "\nYour Answer:", candidateAnswers[i] + "\nCorrect Answer:", correctAnswers[i] + "\n")
   }
     console.log(">>> Overall Grade:", percentage + "%", "(" + score, "of", String(questions.length), "responses correct) <<<");
+  */
+
+  //THE BETTER WAY
+  console.log("\nCandidate Name:", candidateName);
+  for (let i = 0; i < questions.length; i++) {
+    console.log(`${i+1}) ${questions[i]}
+Your Answer: ${candidateAnswers[i]}
+Correct Answer: ${correctAnswers[i]}
+`);
+  }
+  console.log(
+    `>>> Overall Grade: ${percentage}% (${score} of ${questions.length} responses correct) <<<
+>>> Status: ${veredict} <<<
+    `);
 
   let grade = percentage;
   
